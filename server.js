@@ -10,7 +10,7 @@ const MODEL_NAME = "gemini-1.5-flash";
 const API_KEY =  "AIzaSyBV2bRAuojLJpWKL-V5pBOH41-pWSjlFsI";
 
 // URL del webhook
-const WEBHOOK_URL = "https://hook.us2.make.com/jku1ltzafo6xkd9yrw0395b3xodym9su";
+const WEBHOOK_URL = "";
 
 // Historial de la conversación en memoria
 let chatHistory = [
