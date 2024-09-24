@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 const MODEL_NAME = "gemini-1.5-flash"; 
-const API_KEY =  "AIzaSyBV2bRAuojLJpWKL-V5pBOH41-pWSjlFsI";
+const API_KEY =  process.env.API_KEY;
 
 // URL del webhook
 const WEBHOOK_URL = "";
