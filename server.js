@@ -1,10 +1,11 @@
 const express = require('express');
 const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } = require('@google/generative-ai');
 const axios = require('axios'); // Import for making HTTP requests
-
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 8080;
 app.use(express.json());
+app.use(cors());
 
 const MODEL_NAME = "gemini-1.5-flash"; 
 const API_KEY =  process.env.API_KEY;
