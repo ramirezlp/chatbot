@@ -14,7 +14,7 @@ RUN npm install --production
 COPY . .
 
 # Expone el puerto que usa la aplicación (Railway asigna un puerto, pero es importante exponerlo)
-EXPOSE 3000
+EXPOSE 8080
 
 # Comando para iniciar la aplicación
 CMD ["node", "server.js"]
