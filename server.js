@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 const MODEL_NAME = "gemini-1.5-flash"; 
-const API_KEY =  "AIzaSyBVWDL19KIoNLiUf8mjbLcYQCgPtUnQ6_s";
+const API_KEY = process.env.API_KEY;
 
 // URL del webhook
 const WEBHOOK_URL = "";
