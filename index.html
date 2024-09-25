@@ -96,9 +96,10 @@
       const userMessage = userInput.value;
       chatHistory.innerHTML += `<div class="user-message">${userMessage}</div>`;
       userInput.value = ''; // Clear input field
+      chatHistory.scrollTop = chatHistory.scrollHeight;
       console.log(userMessage)
       try {
-        const response = await fetch('/chat', {
+        const response = await fetch('https://chatbot-production-03b7.up.railway.app/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -110,8 +111,8 @@
         console.log(data)
         const botMessage = data.response;
         console.log(botMessage)
-        // Add chat message to the chat history
         const botMessageFormatted = botMessage.replace(/\n/g, '<br>');
+        // Add chat message to the chat history
         
         chatHistory.innerHTML += `<div class="bot-message">${botMessageFormatted}</div>`;
 
