@@ -18,38 +18,94 @@
     padding: 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     width: 400px;
+    max-width: 100%; /* Asegura que no desborde el contenedor padre */
   }
-  
-  h1 {
+
+  .chatbot-title {
+    color: #000 !important;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
-  
+
   #chat-history {
     height: 300px;
     overflow-y: scroll;
+    overflow-x: hidden; /* Evitar el desplazamiento horizontal */
+    padding-right: 10px; /* Espacio para la barra de scroll */
   }
-  
+
+  /* Estilo de la barra de scroll */
+  #chat-history::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  #chat-history::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  #chat-history::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+  }
+
+  #chat-history::-webkit-scrollbar-thumb:hover {
+    background-color: #45a049;
+  }
+
   .user-message {
     text-align: right;
+    color: #000 !important;
     padding: 10px;
     background-color: #f0f0f0;
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 10px;
     margin-bottom: 5px;
+    margin-right: 5px;
+    font-size: 13px;
+    word-wrap: break-word; /* Evitar overflow horizontal por palabras largas */
+    position: relative;
   }
-  
+
+  .user-message::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 10px solid #f0f0f0;
+    border-top: 10px solid transparent;
+  }
+
   .bot-message {
     text-align: left;
+    color: #000 !important;
     padding: 10px;
     background-color: #e0f0e0;
-    border-radius: 10px;
+    border-radius: 10px 10px 10px 0px;
+    margin-right: 5px;
     margin-bottom: 5px;
+    font-size: 13px;
+    word-wrap: break-word; /* Evitar overflow horizontal por palabras largas */
+    position: relative;
   }
-  
-  form {
+
+  .bot-message::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 10px solid #e0f0e0;
+    border-top: 10px solid transparent;
+  }
+
+  .form-chatbot {
     display: flex;
+    margin-top: 10px;
   }
-  
+
   input {
     flex-grow: 1;
     margin-right: 10px;
@@ -57,40 +113,43 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
-  button {
+
+  .boton-chat {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px !important;
     border-radius: 5px;
     cursor: pointer;
   }
+
   #loader {
-  display: none; /* Hide by default */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-  </style>
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+</style>
 </head>
 <body>
-  <div id="chat-container">
-  <h1>Chatbot</h1>
+    <div id="chat-container">
+  <h3 class="chatbot-title">Chatbot 🤖</h3>
   <div id="chat-history"></div>
-  <form id="chat-form">
-    <input type="text" id="user-input" autocomplete="off" placeholder="Enter your message">
-    <button type="submit">Send</button>
+  <form class="form-chatbot" id="chat-form">
+    <input type="text" id="user-input" autocomplete="off" placeholder="Escribe tu mensaje">
+    <button class="boton-chat" type="submit">Enviar</button>
   </form>
-</div>
-<div id="loader">
-  <img src="loader.gif" width="150px" alt="Loading...">
-</div>
+  <div id="loader">
+      <img src="https://i.postimg.cc/KvxSKSjb/loader.gif" width="150px" alt="Loading...">
+    </div>
   <script>
     const chatHistory = document.getElementById('chat-history');
     const userInput = document.getElementById('user-input');
     const form = document.getElementById('chat-form');
+    
+    chatHistory.innerHTML += `<div class="bot-message">Hola! Soy el chatbot de IAtomica 🤖 ¿En que puedo ayudarte?</div>`;
 
     async function sendMessage() {
       const userMessage = userInput.value;
