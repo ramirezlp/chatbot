@@ -94,6 +94,7 @@
 
     async function sendMessage() {
       const userMessage = userInput.value;
+      chatHistory.innerHTML += `<div class="user-message">${userMessage}</div>`;
       userInput.value = ''; // Clear input field
       console.log(userMessage)
       try {
@@ -110,8 +111,9 @@
         const botMessage = data.response;
         console.log(botMessage)
         // Add chat message to the chat history
-        chatHistory.innerHTML += `<div class="user-message">${userMessage}</div>`;
-        chatHistory.innerHTML += `<div class="bot-message">${botMessage}</div>`;
+        const botMessageFormatted = botMessage.replace(/\n/g, '<br>');
+        
+        chatHistory.innerHTML += `<div class="bot-message">${botMessageFormatted}</div>`;
 
         // Scroll to the bottom of the chat history
         chatHistory.scrollTop = chatHistory.scrollHeight;
