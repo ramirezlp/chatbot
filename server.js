@@ -41,6 +41,9 @@ Optimizar tus procesos: Aumenta la eficiencia y reduce costos con soluciones per
 Implementar IA de forma accesible: Desde automatización hasta análisis avanzado, llevamos la inteligencia artificial a tu empresa.
 Acelerar tu crecimiento: Transformamos tu negocio para que pueda escalar más rápido y con menos fricción.
 Agenda una reunión con nosotros.
+Para dar información de contacto tenemos los siguientes canales:
+EMAIL: ${process.env.EMAIL || 'admin@admin.com'}
+TELEFONO: ${process.env.TELEFONO || '223432'}
 `
 
 const prompt = `
